@@ -1,8 +1,8 @@
 # Minesweeper-bot
 
-Bot to play and win minesweeper as often as possible
+Bot to play and win minesweeper
 
-# How it works? 
+### How it works? 
 Don't try to use it as a cheat, I changed a few things. And made it impossible to use as a cheat in its current form, but the body is the same, so you can see how it works. If you are able to understand but not able to create it by yourself, you are not able to fix it and make it work on your PC. So don't try it xD
 
 The first what the program does is read pixels and check their colors, and then it saves the data in dictionaries and lists. I used many storing variables to make processing the data easier. The remarkable thing is that at the beginning, the program marks every single block as a bomb. That’s because the block and empty area have the same color. Because of it I need to make it different. Luckily a block with a flag does have another color, but unfortunately, it has the same color as the number seven, fortunately, this number doesn’t appear often, so there is no need to care about it.  
