@@ -4,7 +4,7 @@ import mouse
 import keyboard
 import random
 
-path = "path"
+path = "C:\\Users\\damwid001\\PycharmProjects\\pythonMine\\venv\\Photos\\image.jpg"
 grid = {}
 numbers = {}
 realNumbers = {}
@@ -18,6 +18,12 @@ maybeBomb = []
 listOfBlocks = []
 blocksAround = []
 numbersOfBlocksAround = []
+x_start = 5922
+y_start = 4634 
+facePixelxlose = 105
+facePixelylose = 3288 
+facePixelxwin = 10958
+facePixelywin = 3577
 number = 0
 bombsAround = 0
 x = x_start
@@ -91,15 +97,13 @@ def mapping():
                     numbersAndBlock.pop(number)
             except:
                 pass
-                #print("feil")
+
 
             x += 36
-            #print(i, v, pixels, x, y, number)
         x = x_start
         y += 36
     x = x_start
     y = y_start
-
 
 
 def loss():
@@ -142,9 +146,7 @@ def mapGrid(grid):
 
 
 def makeLists(key):
-    #global numbersOfBlocksAround, listOfBlocks
     global grid
-    #print("key ->", key, grid.get(key)[1])
     if key > 450:
         numbersOfBlocksAround = [key - 29, key - 30, key - 31,
                                  key - 1,            key + 1]
@@ -183,10 +185,6 @@ def makeLists(key):
                         numbers.get(key - 1),                         numbers.get(key + 1),
                         numbers.get(key + 29), numbers.get(key + 30), numbers.get(key + 31)]
 
-    """for x in numbersOfBlocksAround:
-        if x > 480 or x < 1:
-            numbersOfBlocksAround.remove(x)"""
-
     return listOfBlocks, numbersOfBlocksAround
 
 
@@ -211,7 +209,6 @@ def findBombsAround():
 
 
 def clickOnBlocks():
-    #global realNumbers
     clickMore = True
     for key in realNumbers:
 
@@ -245,100 +242,12 @@ def clickOnBlocks():
                     click(grid.get(r)[0], grid.get(r)[1], True)
                     time.sleep(0.1)
                     clickMore = False
-                    #screenshot.save(path)
-                    print("went")
                     time.sleep(0.5)
 
 
-def endFunction():
-    dictUnkownsBlocks = {}
-    for key in realNumbers:
-        unknows = []
-        bombsThere = 0
-        numberThere = -1
-        listOfBlocks, numbersOfBlocksAround = makeLists(key)
-
-        for x in numbersOfBlocksAround:
-            if x in bombs:
-                bombsThere += 1
-
-        numberThere = -1
-        for x in numbersOfBlocksAround:
-            numberThere += 1
-            if listOfBlocks[numberThere] == 20 and x not in bombs:
-                unknows.append(x)
-
-        numberThere = -1
-        for x in numbersOfBlocksAround:
-            numberThere += 1
-            if listOfBlocks[numberThere] == 20 and x not in bombs:
-                needsThere = grid.get(key)[2] - bombsThere
-
-                if dictUnkownsBlocks.__contains__(x):
-                    dictUnkownsBlocks[x].append([needsThere, unknows])
-                else:
-                    dictUnkownsBlocks[x] = [[needsThere, unknows]]
-
-
-    for key in dictUnkownsBlocks:
-        listOfBlocks, numbersOfBlocksAround = makeLists(key)
-        for x in dictUnkownsBlocks.get(key):
-
-            print(f"xxx {key} {x} {dictUnkownsBlocks.get(key)} xxx")
-    print(dictUnkownsBlocks)
-
-
-
-
-    return True
-
-    #print("dictU", key, dictUnkownsBlocks.get(key))
-""" if listOfBlocks.count(20) != realNumbers.get(key):
-    for x in numbersOfBlocksAround:
-        if x in realNumbers:
-            #print(numbersOfBlocksAround, key)
-            bombsHere = 0
-            numberHere = -1
-            listOfBlocksHere, numbersOfBlocksAroundHere = makeLists(x)
-            unknows2 = []
-            for keyTo in listOfBlocksHere:
-                numberHere += 1
-                if keyTo == 20 and numbersOfBlocksAroundHere[numberHere] not in bombs:  # a block
-                    unknows2.append(numbersOfBlocksAroundHere[numberHere])
-
-            for j in numbersOfBlocksAroundHere:
-                if j in bombs:
-                    bombsHere += 1
-
-            needsHere = grid.get(x)[2] - bombsHere
-
-            print("unkowns ->", unknows2, unknows, x, key, needsHere, needsThere)"""
-
-
-
-def findUnkowns(block, y):
-    bombsHere = 0
-    unknows = []
-
-    numberHere = -1
-    #print("x ->" , block, y)
-    listOfBlocksHere, numbersOfBlocksAroundHere = makeLists(block)
-
-    for keyTo in listOfBlocksHere:
-        numberHere += 1
-        if keyTo == 20 and numbersOfBlocksAroundHere[numberHere] not in bombs:  # a block
-            unknows.append(numbersOfBlocksAroundHere[numberHere])
-
-
-
-    return unknows
-
-
-#print("unknows1 ->", findUnkowns(x, numbersOfBlocksAround),"key ->", key,"x ->" ,x, listOfBlocks, unknows,  "<- unkowns")
 
 time.sleep(5)
 clicking()
-
 
 while True:
     print("new line")
@@ -361,41 +270,3 @@ while True:
     findBombsAround()
     clickOnBlocks()
 
-
-
-
-"""if h in bombs:
-    bombsHere += 1"""
-
-
-#592 312
-#628 312
-#592 348
-# 16x 30
-#print(numbers.get(r)[0], numbers.get(r)[1], r)
-#contains_1 = 1 in a_dictionary.values()
-#if 'time' not in listOfStrings
-#click(grid.get(key)[0], grid.get(key)[1], True)
-#listOfBlocks = [[numbers.get(key - 29), key - 29] ,[ numbers.get(key - 30), key - 30], [numbers.get(key - 31), key - 31],
-#                            [numbers.get(key - 1), key - 1],  [numbers.get(key + 1), key + 1],
-#                            [numbers.get(key + 29), key + 29], [numbers.get(key + 30), key + 30], [numbers.get(key + 31), key + 31]]
-
-
-
-""" if h < 480 and h >= 1:
-             if bombsAround == realNumbers.get(key) and listOfBlocks.__contains__(20):
-                     listOfBlocks, numbersOfBlocksAround = makeLists(h)
-                     
-                     
-     if h == 20: # a block
-        unknows.append(h) # it must be same amount of unkowns here and in a block around
-
-    elif h in bombs:
-        bombsAround += 1
-
-    elif h == 10:
-        pass
-
-    else: #find how many equal uknows are in this number and number around and if there are equal then click
-        #findUnkowns(key, numbersOfBlocksAround)
-"""
