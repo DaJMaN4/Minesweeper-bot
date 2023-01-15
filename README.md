@@ -16,3 +16,4 @@ But when it is possible to know where bombs are first, it chooses the first proc
 
 But this is a game of luck. This program will win as often as it is possible. To do that, it needs to have at least one more argument, which is hard to figure out and much harder to implement because it ultimately needs to use data from every single block on the grid, it sounds weird, and it is weird, and a very hard problem, which I didn't solve because I began to have headaches while working on it, but one day I will solve it.
 
+The video: https://www.youtube.com/watch?v=IiAZ37mdCd8
